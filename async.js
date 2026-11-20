@@ -31,16 +31,68 @@
 // setTimeout(downloadComplete, 2000);
 // console.log("You can continue reviewing.");
 
-function prepareCertificate(studentName, callback) {
-    console.log("Preparing certificate for " + studentName);
+/*
+JavaScript Promise
+------------------
+A promise is a javascript object that represents the result
+of an operation that may finish later.
 
-    setTimeout(() => {
-        callback(studentName);
-    }, 3000);
-}
+A promise has 3 states:
+1. Pending: The operaiton is still in progress
+2. Fullfilled: The operations completed successfully using resolve()
+3. Rejected: The operations failed using reject()
+*/
 
-function certificateReady(name) {
-    console.log(name + "'s certificate is ready!");
-}
-prepareCertificate("Abdulrahman", certificateReady)
-console.log("In progress.....")
+// function prepareCertificate(studentName, callback) {
+//     console.log("Preparing certificate for " + studentName);
+
+//     setTimeout(() => {
+//         callback(studentName);
+//     }, 3000);
+// }
+
+// function certificateReady(name) {
+//     console.log(name + "'s certificate is ready!");
+// }
+// prepareCertificate("Abdulrahman", certificateReady)
+// console.log("In progress.....")
+
+let myPromise = new Promise((resolve, reject) => {
+    resolve("Success!");
+    //reject("Sorry, failed!");
+});
+
+myPromise
+    .then(result => console.log(result))
+    .catch(error => console.log(error))
+    .finally(() => console.log("Successfully completed."));
+
+
+// let mark = 25;
+
+// let result = new Promise((resolve, reject) => {
+//     if(mark >= 50)
+//         resolve("Passed!");
+//     else
+//         reject("Failed");
+// });
+
+// result
+//     .then(message => console.log(message))
+//     .catch(error => console.log(error))
+//     .finally(() => console.log("End!"));
+
+// let certificate = new Promise((resolve, reject) => {
+//     // setTimeout(() => {
+//     //     resolve("Certificate ready!");
+//     // }, 2000);
+//     setTimeout(() => {
+//         reject("Sorry, certificate is not ready!");
+//     }, 2000);
+// });
+
+// console.log("Preparing certificate.....");
+// certificate
+//     .then(message => {console.log(message);})
+//     .catch(error => {console.log("Error issuing certificate");})
+//     .finally(() => {console.log("Request completed!")});
